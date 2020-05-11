@@ -31,10 +31,10 @@
             <input type="text" id="direccion" name="direccion" value="" placeholder="Ingrese su dirección ..." onfocus="Escribe(this)"/>
              <br>
           <label for="telefono">Teléfono (*)</label>
-             <input type="text" id="telefono" name="telefono" value="" placeholder="Ingrese su número telefónico..." onfocus="Escribe(this)" onkeyup="this.value = validar_numero(this.value)" />
+             <input type="text" id="telefono" name="telefono" value="" placeholder="Ingrese su número telefónico..." onfocus="Escribe(this)" onkeyup="this.value = isValidDate(this.value)" />
             <br>
             <label for="fecha">Fecha Nacimiento (*)</label>
-            <input type="text" id="ExpiryDate" name="ExpiryDate" value="11/22/19877" placeholder="Ingrese su fecha de nacimiento dd/mm/yyyy..." onfocus="Escribe(this)" onkeyup="this.value = checkDate(this.value)"/>
+            <input type="text" id="ExpiryDate" name="ExpiryDate" vale="" placeholder="Ingrese su fecha de nacimiento dd/mm/yyyy..." onfocus="Escribe(this)" onkeyup="isDate(this.value = checkDate(this.value))" />
             <br>
             <label for="correo">Correo electrónico (*)</label>
             <input type="email" id="correo" name="correo" value="" placeholder="Ingrese su correo electrónico ..." onfocus="Escribe(this)" onkeyup="this.value = valida_Correo(this.value)"/>

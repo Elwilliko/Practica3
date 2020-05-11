@@ -1,4 +1,4 @@
-/*function validarCamposObligatorios()
+function validarCamposObligatorios()
 {
     var bandera = true
 
@@ -18,7 +18,7 @@
         alert('Error: revisar los comentarios')
     }
     return bandera
-}*/
+}
 
 //Validar que sea letra
 
@@ -107,8 +107,7 @@ function valida_Correo() {
         if (!(array[1] == 'ups.edu.ec') && !(array[1] == 'est.ups.edu.ec')) {
             document.getElementById('mail').classList.add('error');
             document.getElementById('e').classList.add('p');
-            alert('Exte' +
-                'nsión invalida use ups.edu.ec o est.ups.edu.ec')
+            alert('Extensión invalida use ups.edu.ec o est.ups.edu.ec')
             return true;
         } else {
             return false;
@@ -208,7 +207,7 @@ function validar_clave(contrasenna)
     return false;
 }
 
-function validarCamposObligatorios() {
+/*function validarCamposObligatorios() {
 
     var bandera = false;
 
@@ -240,64 +239,4 @@ function validarCamposObligatorios() {
         }
 
     }
-}
-
-
-function isDate(ExpiryDate) {
-    var objDate,  // date object initialized from the ExpiryDate string
-        mSeconds, // ExpiryDate in milliseconds
-        day,      // day
-        month,    // month
-        year;     // year
-    // date length should be 10 characters (no more no less)
-    if (ExpiryDate.length !== 10) {
-        return false;
-    }
-    // third and sixth character should be '/'
-    if (ExpiryDate.substring(2, 3) !== '/' || ExpiryDate.substring(5, 6) !== '/') {
-        return false;
-    }
-    // extract month, day and year from the ExpiryDate (expected format is mm/dd/yyyy)
-    // subtraction will cast variables to integer implicitly (needed
-    // for !== comparing)
-    month = ExpiryDate.substring(0, 2) - 1; // because months in JS start from 0
-    day = ExpiryDate.substring(3, 5) - 0;
-    year = ExpiryDate.substring(6, 10) - 0;
-    // test year range
-    if (year < 1000 || year > 3000) {
-        return false;
-    }
-    // convert ExpiryDate to milliseconds
-    mSeconds = (new Date(year, month, day)).getTime();
-    // initialize Date() object from calculated milliseconds
-    objDate = new Date();
-    objDate.setTime(mSeconds);
-    // compare input date and parts from Date() object
-    // if difference exists then date isn't valid
-    if (objDate.getFullYear() !== year ||
-        objDate.getMonth() !== month ||
-        objDate.getDate() !== day) {
-        return false;
-    }
-    // otherwise return true
-    return true;
-}
-
-function checkDate(){
-    // define date string to test
-    var ExpiryDate = document.getElementById('ExpiryDate').value;
-    // check date and print message
-    if (isDate(ExpiryDate)) {
-        alert('OK');
-    }
-    else {
-        alert('Invalid date format!');
-    }
-
-}
-$(function() {
-
-    $('#test').click(function () {
-        checkDate();
-    });
-})
+}*/
