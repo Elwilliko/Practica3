@@ -1,4 +1,5 @@
-
+body {font-family: Arial, Helvetica, sans-serif;}
+form {border: 3px solid #f1f1f1;}
 .mySlides {
     display:none;
     width: 100%;
@@ -25,13 +26,13 @@
 }
 
 .black:hover {
-    color:#fff!important;
-    background-color:#000!important
+    color:#424242!important;
+    background-color:#BDBDBD!important
 }
 
 .right {
     position:absolute;
-    top:350px;
+    top:1370px;
     right:10.5%;
     transform:translate(0%,-50%);
     -ms-transform:translate(0%,-50%);
@@ -39,7 +40,7 @@
 
 .left {
     position:absolute;
-    top:350px;
+    top:1370px;
     left:10.5%;
     transform:translate(0%,-50%);
     -ms-transform:translate(-0%,-50%);
@@ -47,6 +48,6 @@
 
 .center {
     position:absolute;
-    top:620px;
+    top:1350px;
     right: 45%;
 }
