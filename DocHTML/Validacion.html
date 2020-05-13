@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8"
+    <meta charset="UTF-8">
     <title>Validacion</title>
     <link rel="stylesheet" type="text/css" href="../DocCSS/Validacion.css">
 
@@ -20,12 +20,12 @@
 <form id="formulario01" method="POST" action="../DocPHP/validar.php" onsubmit="return validarCamposObligatorios()">
     <label for="cedula">Cedula (*)</label>
             <input type="text" id="cedula" name="cedula" value="" placeholder="Ingrese el número de cedula ..." onfocus="Escribe(this)" onkeyup="ValidarCedula(this.value = validar_numero(
-                this.value))"/>
-            <span id="mensajeCedula" class="error"></span>
+                this.value))">
+            <span span id="c" style="display: none;">*error</span>
             <br>
              <label for="nombres">Nombres (*)</label>
             <input type="text" id="nombres" name="nombres" value="" placeholder="Ingrese sus dos nombres ..." onfocus="Escribe(this)" onkeyup="this.value = validarLetras(this.value)"
-                   onchange="this.value = duos_valores(this.value)"/>
+                   onchange= "this.value = duos_valores(this.value)"/>
                 <br>
         <label for="apellidos">Apelidos (*)</label>
         <input type="text" id="apellidos" name="apellidos" value="" placeholder="Ingrese sus dos apellidos ..." onfocus="Escribe(this)" onkeyup="this.value = validarLetras(this.value)"
@@ -35,18 +35,19 @@
             <input type="text" id="direccion" name="direccion" value="" placeholder="Ingrese su dirección ..." onfocus="Escribe(this)"/>
              <br>
           <label for="telefono">Teléfono (*)</label>
-             <input type="text" id="telefono" name="telefono" value="" placeholder="Ingrese su número telefónico..." onfocus="Escribe(this)" onkeyup="this.value = isValidDate(this.value)" />
+             <input type="text" id="telefono" name="telefono" value="" placeholder="Ingrese su número telefónico..." onfocus="Escribe(this)" onkeyup="validarTelefono(this.value = validar_numero(this.value))" />
             <br>
             <label for="fecha">Fecha Nacimiento (*)</label>
-            <input type="text" id="ExpiryDate" name="ExpiryDate" vale="" placeholder="Ingrese su fecha de nacimiento dd/mm/yyyy..." onfocus="Escribe(this)" onkeyup="isDate(this.value = checkDate(this.value))" />
+            <input type="text" id="ExpiryDate" name="ExpiryDate" vale="" placeholder="Ingrese su fecha de nacimiento dd/mm/yyyy..." onfocus="Escribe(this)" onkeyup="isValidDate(this.value )" />
             <br>
             <label for="correo">Correo electrónico (*)</label>
-            <input type="text" id="correo" name="correo" value="" placeholder="Ingrese su correo electrónico ..." onfocus="Escribe(this)" onkeyup="this.value = valida_Correo(this.value)"/>
+            <input type="text" id="correo" name="correo" value="" placeholder="Ingrese su correo electrónico ..." onfocus="Escribe(this)" onkeyup="valida_Correo(this.value)"/>
             <br>
             <label for="contrasena">Contraseña (*)</label>
-            <input type="password" id="contrasena" name="contrasena" value="" placeholder="Ingrese su contraseña ..." onfocus="Escribe(this)" onkeyup="this.value = validar_clave(this.value) "/>
+            <input type="password" id="contrasena" name="contrasena" value="" placeholder="Ingrese su password ..." onfocus="Escribe(this)" onkeyup="validar_Password(this.value)"/>
             <br>
-        <input type="submit" id="crear" name="crear" value="Aceptar" />
+
+    <input type="submit" id="crear" name="crear" value="Aceptar" />
               <input type="reset" id="cancelar" name="cancelar" value="Cancelar" />
 </form>
 

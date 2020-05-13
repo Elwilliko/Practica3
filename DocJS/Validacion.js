@@ -1,4 +1,4 @@
-function validarCamposObligatorios()
+/*function validarCamposObligatorios()
 {
     var bandera = true
 
@@ -18,6 +18,39 @@ function validarCamposObligatorios()
         alert('Error: revisar los comentarios')
     }
     return bandera
+}*/
+function validarCamposObligatorios() {
+
+    var bandera = false;
+
+    for (var i = 0; i < document.forms[0].length; i++) {
+        var elemento = document.forms[0].elements[i];
+        if (elemento.value.trim() == '') {
+            bandera = true;
+            elemento.classList.add('error');
+            break;
+        }
+    }
+
+    if (bandera == true) {
+
+        alert('Exiten campos vacios');
+        document.getElementById('p').classList.add('p');
+        return false;
+
+    } else {
+        var fecha = validarFecha();
+        var cedula = ValidarCedula();
+        var correo = valida_Correo();
+        // var contraseña =validarPassword();
+        var telefono =validarTelefono();
+        if (fecha || cedula || correo || telefono) {
+            return false;
+        } else {
+            return true;
+        }
+
+    }
 }
 
 //Validar que sea letra
@@ -39,8 +72,9 @@ function validar_numero(string) {
     var filtro = '1234567890';
 
     for (var i = 0; i < string.length; i++)
-        if (filtro.indexOf(string.charAt(i)) != -1)
-            out += string.charAt(i);
+        if (filtro.indexOf(string.charAt(i)) != -1){
+            out += string.charAt(i)
+        }
 
     return out;
 }
@@ -51,17 +85,17 @@ function ValidarCedula() {
     var total = 0;
     var longitud = x.length;
     var longcheck = longitud - 1;
-    if (longitud == 10) {
+    if (x !== "" & longitud === 10){
         for (i = 0; i < longcheck; i++) {
             if (i % 2 === 0) {
                 var aux = x.charAt(i) * 2;
-                if (aux >= 10) aux -= 9;
+                if (aux >= 9) aux -= 9;
                 total += aux;
             } else {
                 total += parseInt(x.charAt(i));
             }
         }
-        total = total % 10 != 0 ? 10 - total % 10 : 0;
+        total = total % 10 ? 10 - total % 10 : 0;
 
         if (x.charAt(longitud - 1) == total) {
 
@@ -69,11 +103,9 @@ function ValidarCedula() {
         } else {
             document.getElementById('cedula').classList.add('error');
             document.getElementById('c').classList.add('p');
-            alert("Su cedula no corresponde a Ecuador")
+            alert("Cedula Ecuatoriana Incorrecta")
             return true;
         }
-    } else {
-        return false;
     }
 }
 
@@ -85,11 +117,13 @@ function Escribe(elemento) {
 
 function duos_valores(string) {
     var out = '';
-    var array = string.split(' ');
+    var array = string.split(" ");
     if (array.length == 1) {
         out += array[0];
+
     } else {
         out += array[0] + ' ' + array[1];
+
     }
     return out;
 }
@@ -97,15 +131,15 @@ function duos_valores(string) {
 
 
 function valida_Correo() {
-    var array = document.getElementById('mail').value.split('@');
+    var array = document.getElementById('correo').value.split('@');
 
     if (array[0].length < 3) {
-            document.getElementById('mail').classList.add('error');
+            document.getElementById('correo').classList.add('error');
         alert('Correo no válido')
         return true;
     } else {
         if (!(array[1] == 'ups.edu.ec') && !(array[1] == 'est.ups.edu.ec')) {
-            document.getElementById('mail').classList.add('error');
+            document.getElementById('correo').classList.add('error');
             document.getElementById('e').classList.add('p');
             alert('Extensión invalida use ups.edu.ec o est.ups.edu.ec')
             return true;
@@ -115,6 +149,9 @@ function valida_Correo() {
 
     }
 }
+
+
+
 function validarTelefono(){
     let regTelefono = new RegExp('^[0-9]*$');
     let valorTelefono = document.getElementById('telefono').value;
@@ -134,13 +171,16 @@ function validarTelefono(){
         return true;
 }
 
-function validar_Password(x){
-    var regexPassword = new RegExp("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$");
-    if(regexPassword.test(x)){
-        return true;
+function validar_Password(){
+    var regexPassword = new RegExp('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$');
+    var x = document.getElementById('contrasena').value;
+    var registro = regexPassword.test(x);
+    if(registro === false ){
+        document.getElementById('contrasena').value = x;
+        alert("Debe ser minimo 8 caracteres; ademas debe incluir Mayusculas y Minusculas; y minimo un numero y un caracter");
+        return false;
     }else
-        alert("No cumple con los requisitos para una contraseña");
-    return false
+    return true;
 }
 
 function validarFecha() {
@@ -160,83 +200,15 @@ function validarFecha() {
 }
 
 function isValidDate(x){
-    var x = document.getElementById('fec').value;
+    var x = document.getElementById('ExpiryDate').value;
 
     if (x.match(/^(?:(0[1-9]|1[012])[\- \/.](0[1-9]|[12][0-9]|3[01])[\- \/.](19|20)[0-9]{2})$/)){
         return false;
     }else{
-        document.getElementById('fec').classList.add('error');
+        document.getElementById('ExpiryDate').classList.add('error');
         alert('Fecha mal ingresada, usar formato dd/mm/yyyy');
         return true;
     }
 }
 
-function validar_clave(contrasenna)
-{
-    if(contrasenna.length >= 8)
-    {
-        var mayuscula = false;
-        var minuscula = false;
-        var numero = false;
-        var caracter_raro = false;
 
-        for(var i = 0;i<contrasenna.length;i++)
-        {
-            if(contrasenna.charCodeAt(i) >= 65 && contrasenna.charCodeAt(i) <= 90)
-            {
-                mayuscula = true;
-            }
-            else if(contrasenna.charCodeAt(i) >= 97 && contrasenna.charCodeAt(i) <= 122)
-            {
-                minuscula = true;
-            }
-            else if(contrasenna.charCodeAt(i) >= 48 && contrasenna.charCodeAt(i) <= 57)
-            {
-                numero = true;
-            }
-            else
-            {
-                caracter_raro = true;
-            }
-        }
-        if(mayuscula == true && minuscula == true && caracter_raro == true && numero == true)
-        {
-            return true;
-        }
-    }
-    return false;
-}
-
-/*function validarCamposObligatorios() {
-
-    var bandera = false;
-
-    for (var i = 0; i < document.forms[0].length; i++) {
-        var elemento = document.forms[0].elements[i];
-        if (elemento.value.trim() == '') {
-            bandera = true;
-            elemento.classList.add('error');
-            break;
-        }
-    }
-
-    if (bandera == true) {
-
-        alert('Llenar todos los campos');
-        document.getElementById('p').classList.add('p');
-        return false;
-
-    } else {
-        var fecha = validarFecha();
-        var cedula = ValidarCedula();
-        var correo = valida_Correo();
-        // var contraseña =validarPassword();
-        var telefono =validarTelefono();
-        if (fecha || cedula || correo || telefono) {
-            return false;
-        } else {
-            return true;
-        }
-
-    }
-}*/
